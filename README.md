@@ -113,39 +113,33 @@ project_root/
 
 ---
 
-## **Setup Instructions**
+### Setup Instructions
 
-### **1. Prerequisites**
+#### 1. Prerequisites
+Ensure the following dependencies are installed on your system:
+- **Python**: Version 3.9 or higher
+- **PostgreSQL**: Version 12 or higher
+- **Redis**
+- **Elasticsearch**
 
-- Python 3.9+
-- PostgreSQL 12+
-- Redis
-- Elasticsearch
+#### 2. Installation
 
-
-
-### **2. Installation**
-
-#### **Clone the Repository**
-
+##### Clone the Repository
 ```bash
 git clone <repository-url>
 cd project_root
 ```
 
-#### **Set Up a Virtual Environment**
-
+##### Set Up a Virtual Environment
 ```bash
 python -m venv env
 source env/bin/activate   # On Windows: env\Scripts\activate
 pip install -r requirements.txt
 ```
 
-#### **Configure ************************************************************************************`.env`************************************************************************************ File**
-
-Create a `.env` file in the project root:
-
-```
+##### Configure the `.env` File
+Create a `.env` file in the project root directory and add the following:
+```plaintext
 SECRET_KEY=your_secret_key
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
@@ -156,26 +150,50 @@ DB_HOST=localhost
 DB_PORT=5432
 ```
 
-#### **Apply Migrations**
-
+##### Apply Migrations
+Generate and apply the necessary database migrations:
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
-#### **Create a Tenant**
-
+##### Create a Tenant
+Create a tenant with the required schema, name, and domain:
 ```bash
 python manage.py create_tenant --schema_name=tenant1 --name="Tenant 1" --domain=tenant1.localhost
 ```
 
-#### **Run the Server**
-
+##### Run the Server
+Start the Django development server:
 ```bash
 python manage.py runserver
 ```
 
-Access the application at `http://tenant1.localhost:8000/`.
+You can now access the application at:  
+[http://tenant1.localhost:8000/](http://tenant1.localhost:8000/)
+
+---
+
+#### 3. Frontend Setup
+
+##### Navigate to the Frontend Directory
+```bash
+cd frontend
+```
+
+##### Install Dependencies
+```bash
+npm install
+```
+
+##### Start the Frontend Server
+```bash
+npm start
+```
+
+Access the frontend application at:  
+[http://localhost:3000/](http://localhost:3000/)
+
 
 ---
 
