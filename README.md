@@ -255,8 +255,3 @@ python manage.py test
   - A simple React app connects to the WebSocket server to display notifications to users.
 
 ---
-
-## **Conclusion**
-
-This application is designed with scalability, performance, and maintainability at its core. By following the setup instructions and best practices outlined above, the system can handle multiple tenants, provide robust authentication, and deliver a seamless user experience.
-
