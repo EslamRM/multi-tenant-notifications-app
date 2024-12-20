@@ -16,12 +16,10 @@ The project is designed with modularity and scalability in mind. Below is the di
 project_root/
 ├── auth_jwt/
 │   ├── models.py
-│   ├── serializers.py
+│   ├── admin.py
+│   ├── apps.py
 │   ├── views.py
-│   ├── tests/
-│   │   ├── test_views.py
-│   │   ├── test_serializers.py
-│   ├── urls.py
+│   ├── middleware.py
 ├── notifications/
 │   ├── models.py
 │   ├── serializers.py
@@ -29,21 +27,23 @@ project_root/
 │   ├── management/
 │   │   ├── commands/
 │   │   │   ├── rebuild_indices.py
-│   ├── tests/
-│   │   ├── test_models.py
-│   │   ├── test_views.py
-│   │   ├── test_serializers.py
-│   ├── urls.py
+│   ├── tests.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── routing.py
+│   ├── signals.py
+│   ├── consumers.py
+│   ├── elasticsearch_utils.py
 ├── tenants/
 │   ├── models.py
 │   ├── admin.py
-│   ├── management/
-│   │   ├── commands/
-│   │   │   ├── create_tenant.py
-│   ├── tests/
+│   ├── tests.py
+│   ├── apps.py
 ├── search/
 │   ├── models.py
 │   ├── serializers.py
+│   ├── admin.py
+│   ├── apps.py
 │   ├── views.py
 │   ├── urls.py
 ├── project/
@@ -188,14 +188,6 @@ Run all tests:
 ```bash
 python manage.py test
 ```
-
-Run tests for a specific app:
-
-```bash
-python manage.py test auth_jwt
-```
-
----
 
 ## **Scalability and Performance Considerations**
 
