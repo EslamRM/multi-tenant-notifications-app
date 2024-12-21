@@ -129,7 +129,7 @@ Ensure the following dependencies are installed on your system:
 git clone <repository-url>
 cd project_root
 ```
-### Set Up Docker Environment
+### Set Up With Docker
 ##### Configure the `.env` File
 Create a `.env` file in the project root directory and add the following:
 ```plaintext
@@ -159,7 +159,7 @@ python -m venv env
 source env/bin/activate   # On Windows: env\Scripts\activate
 pip install -r requirements.txt
 ```
-
+### (Optional) Set Up Without Docker
 ##### Configure the `.env` File
 Create a `.env` file in the settings.py directory and add the following:
 ```plaintext
