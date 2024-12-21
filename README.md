@@ -129,7 +129,30 @@ Ensure the following dependencies are installed on your system:
 git clone <repository-url>
 cd project_root
 ```
+### Set Up Docker Environment
+##### Configure the `.env` File
+Create a `.env` file in the project root directory and add the following:
+```plaintext
+SECRET_KEY=your_secret_key
+DEBUG=True
+# PostgreSQL configuration
+DB_NAME=multi_tenant_db
+DB_USER=postgres
+DB_PASSWORD=test
+DB_HOST=db  # Updated to match the service name in docker-compose.yml
+DB_PORT=5432
 
+# Elasticsearch configuration
+ELASTICSEARCH_HOST=http://elasticsearch:9200
+```
+#### Build and Start Docker Containers
+Ensure Docker is installed and running on your system. Use the following command to build and start the containers:
+```bash
+docker-compose up --build
+```
+Access the Application
+Once the containers are up, you can access the application at:
+http://tenant1.localhost:8000/
 ##### Set Up a Virtual Environment
 ```bash
 python -m venv env
@@ -138,7 +161,7 @@ pip install -r requirements.txt
 ```
 
 ##### Configure the `.env` File
-Create a `.env` file in the project root directory and add the following:
+Create a `.env` file in the settings.py directory and add the following:
 ```plaintext
 SECRET_KEY=your_secret_key
 DEBUG=True
