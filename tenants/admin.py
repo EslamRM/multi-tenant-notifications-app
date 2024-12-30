@@ -28,8 +28,20 @@ class TenantAdmin(TenantAdminMixin, admin.ModelAdmin):
     search_fields = ("name",)
     inlines = [DomainInline]
 
-    # Restrict access to public schema superusers
+    # Restrict access to tenant model only for superusers and public schema
     def has_module_permission(self, request):
+        return connection.schema_name == "public" and request.user.is_superuser
+
+    def has_view_permission(self, request, obj=None):
+        return connection.schema_name == "public" and request.user.is_superuser
+
+    def has_add_permission(self, request):
+        return connection.schema_name == "public" and request.user.is_superuser
+
+    def has_change_permission(self, request, obj=None):
+        return connection.schema_name == "public" and request.user.is_superuser
+
+    def has_delete_permission(self, request, obj=None):
         return connection.schema_name == "public" and request.user.is_superuser
 
     # Add custom actions
@@ -54,7 +66,7 @@ class TenantUserAdmin(UserAdmin):
         with schema_context(connection.schema_name):
             return super().get_queryset(request)
 
-    # Optionally, restrict actions based on the schema
+    # Restrict actions based on the schema
     def has_module_permission(self, request):
         return (
             connection.schema_name != "public"
